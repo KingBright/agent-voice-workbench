@@ -1,0 +1,14 @@
+{
+  "task": {
+    "kind": "synthesize",
+    "model": "voxcpm2",
+    "text": "你好，欢迎使用本地声音工作台。",
+    "options": {
+      "steps": 10,
+      "guidance": 2.0,
+      "max_patches": 750
+    }
+  },
+  "idempotency_key": "example-tts-v1",
+  "timeout_secs": 600
+}

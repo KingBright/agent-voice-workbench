@@ -1,0 +1,9 @@
+{
+  "toml_documents": 6,
+  "json_documents": 9,
+  "rust_source_files": 19,
+  "rust_source_lines": 2121,
+  "authored_rust_tests": 61,
+  "checks_scope": "TOML/JSON syntax, manifest references, Rust lexical delimiters/module paths, placeholder/secret patterns; NOT Rust compiler, tests or model inference",
+  "errors": []
+}

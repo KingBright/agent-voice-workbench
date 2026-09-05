@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "source_audio": null,
+  "language": "Chinese",
+  "text": "这是明确标记的字幕测试文本。",
+  "timing_source": "imported",
+  "segments": [
+    {
+      "start_ms": 100,
+      "end_ms": 1900,
+      "text": "这是明确标记的字幕测试文本。",
+      "speaker": "example_narrator"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "task": {
+    "kind": "transcribe",
+    "model": "qwen3_asr",
+    "audio": "0000000000000000000000000000000000000000000000000000000000000000",
+    "language": "Chinese"
+  },
+  "idempotency_key": "example-asr-v1",
+  "timeout_secs": 600
+}

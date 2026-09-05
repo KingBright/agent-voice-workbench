@@ -1,0 +1,57 @@
+name: Rust verification
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  core-and-api:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      # Bootstrap delivery has not been formatted by rustfmt. Format before tests,
+      # and preserve the diff as evidence instead of pretending the source was checked.
+      - run: cargo fmt --all
+      - run: cargo generate-lockfile
+      - run: cargo clippy --workspace --all-targets --locked
+      - run: cargo test --workspace --locked
+      - name: Save first-build formatting and dependency resolution
+        if: always()
+        shell: bash
+        run: git diff > rustfmt.patch
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bootstrap-evidence-${{ matrix.os }}
+          path: |
+            rustfmt.patch
+            Cargo.lock
+  native-adapters:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            features: native,wgpu
+          - os: windows-latest
+            features: native,wgpu
+          - os: macos-latest
+            features: native,wgpu,metal
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo check -p avw --features ${{ matrix.features }}
+      # Compile-only: model weights, audio quality and hardware inference are NOT tested here.

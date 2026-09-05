@@ -1,0 +1,8 @@
+{
+  "task": {
+    "kind": "export_subtitles",
+    "transcript": "0000000000000000000000000000000000000000000000000000000000000000",
+    "format": "srt"
+  },
+  "timeout_secs": 60
+}

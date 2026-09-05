@@ -1,0 +1,10 @@
+{
+  "task": {
+    "kind": "align",
+    "model": "qwen3_forced_aligner",
+    "audio": "0000000000000000000000000000000000000000000000000000000000000000",
+    "text": "你好，欢迎使用本地声音工作台。",
+    "language": "Chinese"
+  },
+  "timeout_secs": 600
+}

@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "voice-workbench": {
+      "command": "/ABSOLUTE/PATH/TO/avw",
+      "args": [
+        "--workspace",
+        "/ABSOLUTE/PATH/TO/workspace",
+        "--device",
+        "auto",
+        "mcp"
+      ]
+    }
+  }
+}
