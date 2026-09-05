@@ -1,0 +1,17 @@
+/target/
+/.avw/
+*.avwj
+*.lock.tmp
+.env
+.env.*
+!.env.example
+/pretrained_models/
+/checkpoints/
+/downloads/
+*.safetensors
+*.pth
+*.pt
+*.wav
+*.flac
+*.mp3
+.DS_Store
