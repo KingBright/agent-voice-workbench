@@ -149,18 +149,22 @@ examples/         JSON 请求、字幕素材、MCP 配置
 
 ## GitHub 发布
 
-**本次只创建了本地 Git 历史；没有宣称远端仓库已经存在。** 当前连接可写现有仓库，但没有创建仓库的操作；没有擅自改动其他仓库。随交付提供 source ZIP 和保留完整提交的 Git bundle。
+**已于 2026-09-05 提交到 `KingBright/agent-voice-workbench` 的 `main` 分支。** 仓库由用户创建，目前为公开仓库；本次未更改可见性或操作其他仓库。应用安装授权完成后，实际创建文件、提交并快进更新分支均成功。
 
-在有 GitHub CLI 且已登录的机器上，从 bundle 恢复后：
+源码导入提交：`84f0b0e8335b09af23bd6ac38e7d5c5309d5085f`。该提交的 48 个文件与之前交付的源码 ZIP 和 Git bundle 内容一致，Git tree 均为 `bdfc093862395cc14068f6eff77845efb7d3bd32`。原 bundle 提交 `2201b9d1b1956c297e7911f544a0fc38bf7a4479` 的文件快照被完整导入；由于远端先有初始化提交，远端提交哈希与原 bundle 不同。后续发布状态文档更新单独提交，不更改 Rust 源码。
 
 ```sh
-git clone --origin bundle agent-voice-workbench.bundle agent-voice-workbench
+git clone https://github.com/KingBright/agent-voice-workbench.git
 cd agent-voice-workbench
-# 推荐先编译、测试，提交 rustfmt 修改和生成的 Cargo.lock，再发布。
-gh repo create KingBright/agent-voice-workbench --private --source=. --remote=origin --push
+# 首次构建仍需完成依赖锁定、格式化、编译和测试。
+cargo generate-lockfile
+cargo fmt --all
+cargo xtask check
 ```
 
-也可用 `cargo xtask publish --repo KingBright/agent-voice-workbench`。该命令拒绝脏工作区和已有 origin，只创建新私有仓库；不会推送到已存在的同名仓库，不会 force push。发布结果由实际命令返回确认，不能靠 README 中的名字确认。
+GitHub Actions 已为源码导入提交启动 `Rust verification`，运行编号 `33956694903`。**启动 CI 不代表检查已经通过。** 本地环境仍没有 Rust 工具链，真实模型推理仍未验收；请查看该次 Actions 的实际结论，不以发布成功代替测试通过。
+
+`cargo xtask publish --repo OWNER/NEW_NAME` 仅用于创建另一个新的私有仓库，拒绝已有 origin 和已存在的同名目标；不要对当前已发布仓库重复执行。当前仓库后续修改采用正常 commit/push，不需要重新创建仓库。
 
 ## 后续实现的具体缺口
 

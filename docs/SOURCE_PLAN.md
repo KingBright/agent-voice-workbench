@@ -11,4 +11,4 @@ https://chatgpt.com/share/6a9bad6e-2258-83e8-8fbf-8c443aa74a06?ogimg=plain
 
 交付内调整：用内容寻址资源和小任务作为组合单位；只做进程内 Rust 推理，不引入 Python sidecar；使用固定上游 Rust 提交而不是从接口名称臆造模型实现；未完成模型返回 Unsupported；准确区分 chunk timing 与 forced alignment；GUI、实时录音和 LUFS 不在本次代码实现中。
 
-远端操作边界：实际读取连接账号确认 KingBright；工具支持提交文件/树/commit，但未提供新建仓库函数，插件检索也未补齐此能力。容器没有 gh/已有 GitHub 认证。没有向其他项目写入任何内容；仅创建本地 Git 仓库并打包交付。
+远端操作记录：用户创建 `KingBright/agent-voice-workbench` 后，初次写入因应用安装授权缺失失败。用户完成 GitHub App 安装后，实际写入恢复正常；2026-09-05 已将完整源码快照提交到 `main`，提交为 `84f0b0e8335b09af23bd6ac38e7d5c5309d5085f`。仓库保持用户创建时的公开可见性，没有操作其他项目。容器仍无 gh/已有 GitHub 认证，发布通过连接器的 Git tree/commit/ref 接口完成，不包含原 bundle 的相同提交历史。源码文件树与原交付一致；发布状态文档另行更新。
